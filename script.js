@@ -72,7 +72,7 @@ login_button.addEventListener('click', function(event) {
 	event.preventDefault();
 
 	currentAccount = accountsInArray.find(userAccount => {
-		return userAccount.username === username_account.value && userAccount.password === password_account.value;
+		return userAccount.username === username_account.value.toLowerCase() && userAccount.password === password_account.value.toLowerCase();
 	});
 	
 	if (currentAccount) {
@@ -116,7 +116,7 @@ const updateUI = (transactions) => {
 transfer_to_button.addEventListener('click', function(event) {
 	event.preventDefault();
 
-	const receiverAccount = accountsInArray.find(acc => acc.username === transfer_to_account.value);
+	const receiverAccount = accountsInArray.find(acc => acc.username === transfer_to_account.value.toLowerCase());
 
 	if (receiverAccount.username !== currentAccount.username && receiverAccount && Number(transfer_to_amount.value) <= currentAccount.currentBalance) {
 		receiverAccount.transactions.push({ amount: transfer_to_amount.value, type: 'Transfer', recipient: currentAccount.name });

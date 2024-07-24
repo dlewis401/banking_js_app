@@ -7,6 +7,10 @@
 	font-size: 1rem;
 }
 
+button {
+	color: black;
+}
+
 /* Application Main */
 .application-main-container {
 	width: 100%;
@@ -86,7 +90,6 @@
 	height: auto;
 	padding: 1rem;
 	background-color: #8A0000;
-	color: #FFFFFF;
 	margin-bottom: 1rem;
 }
 .makeTransferBox, #transferForm {
@@ -99,11 +102,14 @@
 .request-loan-box {
 	padding: 1rem;
 	background-color: #074B37;
-	color: #fff;
 	width: 15rem;
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
+}
+
+.request-loan-box, .makeTransferBox {
+	color: #fff;
 }
 
 #request-loan-form {
