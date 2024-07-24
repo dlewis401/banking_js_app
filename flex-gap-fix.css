@@ -1,0 +1,27 @@
+/* Application Main */
+.application-main-container {
+	margin-right: 1rem;
+}
+
+/* Login Section */
+#login-section {
+	margin-right: 1rem;
+}
+
+.login-form-element {
+	margin-right: 1rem;
+}
+
+/* Transfer Box */
+.makeTransferBox, #transferForm {
+	margin-right: 1rem;
+}
+
+/* Request Loan Box */
+.request-loan-box {
+	margin-right: 1rem;
+}
+
+#request-loan-form {
+	margin-right: 1rem;
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Banking Application - JS</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<!-- LOGIN SECTION -->
+	<section id="login-section">
+			<img src="https://placehold.co/50x50.svg" alt="Company logo">
+			<h1>Banking Limited</h1>
+			<form class="login-form-element">
+				<div>
+					<label for="username"><strong>Username: </strong></label><input type="text" id="user-input">
+				</div>
+				<div>
+					<label for="password"><strong>Password: </strong></label><input type="password" id="pass-input">
+				</div>
+				<div>
+					<input type="button" value="Login" id="button-login">
+				</div>
+			</form>
+		</section>
+		<main class="application-main-container hidden">
+			<p id="current_account_label"><strong>Current Account: </strong>Name</p>
+			<p id="current_balance_label"><strong>Current Balance: </strong>Number</p>
+			<br>
+			<div class="transaction-container">
+				<h2>Transactions</h2>
+				<div class="transaction-box">
+					<p><strong>Transaction</strong></p>
+					<p>Index: </p>
+					<p>Transferred to: </p>
+					<p>Amount: </p>
+					<p>Date: 00/00/0000</p>
+				</div>
+
+			</div>
+			<div class="makeTransferBox">
+				<h2>Make Transfer</h2>
+				<form id="transferForm">
+					<div>
+						<label for="TransferTo">Transfer To: </label><input type="text" id="transfer_to_account"><br>
+					</div>
+					<div>
+						<label for="Amount_Transferred">Amount: </label><input type="number" id="transfer_amount"><br>
+					</div>
+					<div>
+						<input type="button" value="Make transfer" id="transfer_to_button">
+					</div>
+				</form>
+			</div>
+
+			<div class="request-loan-box">
+				<h2>Request Loan</h2>
+				<form id="request-loan-form">
+					<label for="LoanAmount">Loan Amount: </label><input type="number" id="LoanAmountNumber">
+					<input type="button" value="Request Loan" id="request_loan_button">
+				</form>
+			</div>
+		</main>
+		<script src="script.js"></script>
+</body>
+</html>
