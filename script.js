@@ -31,6 +31,13 @@ const loan_amount_text = document.querySelector('#LoanAmountNumber');
 const request_loan_button = document.querySelector('#request_loan_button');
 const main_app_hidden = document.querySelector('.hidden');
 
+// Date variables
+const current_date = new Date();
+const day = current_date.getDate();
+const month = current_date.getMonth();
+const year = current_date.getFullYear();
+const time = current_date.getTime();
+
 // Object of the bank accounts
 const accounts = {
 	account_lewis: {
@@ -105,7 +112,7 @@ const updateUI = (transactions) => {
 					<p>Index: ${i}</p>
 					<p>${displayReceiver}</p>
 					<p>Amount: £${transaction.amount}</p>
-					<p>Date: 00/00/0000</p>
+					<p>Date & Time: ${String(day).padStart(2, 0)}/${String(month+1).padStart(2, 0)}/${year}: ${current_date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
 				</div>`
 		transaction_container.insertAdjacentHTML('beforeend', htmlBox);
 	});
