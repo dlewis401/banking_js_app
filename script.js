@@ -155,7 +155,7 @@ const updateUI = (transactions) => {
 					<p>Index: ${i}</p>
 					<p>${displayReceiver}</p>
 					<p>Amount: ${new Intl.NumberFormat(navigator.language, { style: 'currency', currency: 'GBP' }).format(Math.abs(transaction.amount))}</p>
-					<p>Date & Time: ${new Intl.DateTimeFormat(navigator.language, {day: '2-digit', month: '2-digit', year: 'numeric'}).format(current_date)}</p>
+					<p> Date: ${new Intl.DateTimeFormat(navigator.language, {day: '2-digit', month: '2-digit', year: 'numeric'}).format(current_date)}</p>
 				</div>`
 		transaction_container.insertAdjacentHTML('beforeend', htmlBox);
 	});
