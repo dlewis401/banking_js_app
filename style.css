@@ -11,6 +11,11 @@
 	color: black;
 }
 
+/* Timer */
+#timeout_text {
+	display: none;
+}
+
 /* Application Main */
 .application-main-container {
 	width: 100%;
