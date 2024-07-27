@@ -30,6 +30,7 @@ const transaction_box = document.querySelector('.transaction-box');
 const loan_amount_text = document.querySelector('#LoanAmountNumber');
 const request_loan_button = document.querySelector('#request_loan_button');
 const main_app_hidden = document.querySelector('.hidden');
+const timeout_timer = document.querySelector('#timeout_text')
 
 // Date variables
 const current_date = new Date();
@@ -37,6 +38,10 @@ const day = current_date.getDate();
 const month = current_date.getMonth();
 const year = current_date.getFullYear();
 const time = current_date.getTime();
+
+// Timer Variable
+let time_ms;
+let timer_countdown;
 
 // Object of the bank accounts
 const accounts = {
@@ -74,6 +79,36 @@ createUsernames(accounts);
 let currentAccount;
 
 
+// Timer function
+
+// Timer UI
+const timer =  function timer_ui() {
+	time_ms = 300000;
+	
+	function tick() {
+		const minutes = String(Math.trunc(time_ms / 60000)).padStart(2, '0');
+		const seconds = String(Math.trunc((time_ms / 1000) % 60)).padStart(2, '0');
+		
+		
+		timeout_timer.innerHTML = `<strong>Timeout in</strong>: ${minutes}:${seconds}`;
+		
+		if (time_ms === 0) {
+			main_app_hidden.classList.add('hidden');
+			clearInterval(timer_countdown)
+			timeout_timer.style.display = "none";
+		};
+		
+		time_ms -= 1000;
+		
+	};
+
+
+	tick()
+	timer_countdown = setInterval(tick, 1000)
+	
+	return time_ms
+}
+
 // When the login button is clicked, find the account with the correct password. This also turns the .hidden CSS opacity to 100.
 login_button.addEventListener('click', function(event) {
 	event.preventDefault();
@@ -87,12 +122,20 @@ login_button.addEventListener('click', function(event) {
 		updateUI(currentAccount.transactions, '', 'transfer', 0)
 		current_account_text.innerHTML = `<strong>Current Account:</strong> ${currentAccount.name}`
 		current_balance_text.innerHTML = `<strong>Current Balance:</strong> £${currentAccount.currentBalance}`
+
+		// Timer
+		if (timer) clearInterval(timer_countdown);
+		timeout_timer.style.display = "block";
+		timer();
+	
 	} else {
 		// Nothing
 	}
 });
 
+// Index variable for array
 let index = 0;
+
 
 // Update UI Function. This clears all HTML & Adds the transactions of the user when the array length is > 0
 const updateUI = (transactions) => {
@@ -135,6 +178,9 @@ transfer_to_button.addEventListener('click', function(event) {
 		current_balance_text.innerHTML = `<strong>Current Balance:</strong> £${currentAccount.currentBalance}`;
 
 		updateUI(currentAccount.transactions);
+
+		if (timer) clearInterval(timer_countdown);
+		timer();
 	}
 });
 
@@ -147,5 +193,8 @@ request_loan_button.addEventListener('click', event => {
 		currentAccount.currentBalance += Number(loan_amount_text.value);
 		current_balance_text.innerHTML = `<strong>Current Balance:</strong> £${currentAccount.currentBalance}`;
 		updateUI(currentAccount.transactions);
+
+		if (timer) clearInterval(timer_countdown);
+		timer();
 	};
 });
