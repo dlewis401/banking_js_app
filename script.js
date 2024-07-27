@@ -111,8 +111,8 @@ const updateUI = (transactions) => {
 					<p><strong>${type}</strong></p>
 					<p>Index: ${i}</p>
 					<p>${displayReceiver}</p>
-					<p>Amount: £${transaction.amount}</p>
-					<p>Date & Time: ${String(day).padStart(2, 0)}/${String(month+1).padStart(2, 0)}/${year}: ${current_date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
+					<p>Amount: ${new Intl.NumberFormat(navigator.language, { style: 'currency', currency: 'GBP' }).format(Math.abs(transaction.amount))}</p>
+					<p>Date & Time: ${new Intl.DateTimeFormat(navigator.language, {day: '2-digit', month: '2-digit', year: 'numeric'}).format(current_date)}</p>
 				</div>`
 		transaction_container.insertAdjacentHTML('beforeend', htmlBox);
 	});
